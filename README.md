@@ -44,7 +44,9 @@ Une *échelle de mels* représente la manière dont les humains perçoivent le c
 
 Maintenant que le signal a été transformé en Mel spectrogramme, il nous reste une dernière étape de data augmentation avant de créer et d’entraîner notre modèle. Avec la méthode **spectro_augment** nous allons appliquer un masque sur le temps et la fréquence du spectrogramme, cela consiste à ajouter des barres horizontales pour la fréquence et verticales pour le temps.
 
-Images avant et après data augmentation
+Voici un exemple de Mel spectrogramme avant et après data augmentation
+
+![](/examples/MelSpectro.png "Mel spectrogram")![](/examples/Melspectro_augment.png "Mel spectrogram")
 
 ## Modèle et entraînement
 
@@ -66,8 +68,17 @@ Le modèle est composé comme suit:
 
 Tout d’abord le temps d’exécution de ce réseau était assez long sur ma machine donc je n’ai pas pu faire beaucoup de tests (l’auteur fait tourner son réseau sur un GPU). Le meilleur résultat obtenu est une précision de 79% en training et 77% en test, pour un nombre de 20 epochs. Cela se rapproche de ce que j’ai pu trouver dans d’autres articles qui annoncent une précision aux alentours des 80%. 
 
-<p align="center>
-          <img width="400" height="300" src="./examples/Results.png">
-</p>
+![](/examples/Results.png "Résultats")
 
 On peut voir qu’il y a un peu d’overfitting, avec un peu d’optimisation on pourrait obtenir les 80% (ajout de dropout et de couches denses, plus de couches convolutionnelles avec plus de neurones...). Enfin, j’ai eu quelques difficultés à modifier le réseau car je ne suis pas familiarisé avec Pytorch.
+
+## Références
+[Audio Deep Learning Made Simple: Sound Classification, Step-by-Step](https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5)
+
+[Audio Deep Learning Made Simple (Part 1): State-of-the-Art Techniques](https://towardsdatascience.com/audio-deep-learning-made-simple-part-1-state-of-the-art-techniques-da1d3dff2504)
+
+[Audio Deep Learning Made Simple (Part 2): Why Mel Spectrograms perform better](https://towardsdatascience.com/audio-deep-learning-made-simple-part-2-why-mel-spectrograms-perform-better-aad889a93505)
+
+[Audio Deep Learning Made Simple (Part 3): Data Preparation and Augmentation](https://towardsdatascience.com/audio-deep-learning-made-simple-part-3-data-preparation-and-augmentation-24c6e1f6b52)
+
+[Explication échelle de mels](http://www.traitement-signal.com/echelle_de_mel.php)
